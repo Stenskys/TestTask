@@ -37,17 +37,17 @@ public class TextModifier {
             if (currentChar == '-') {
                 // Проверяем наличие символов слева и справа от '-'
                 if (i > 0 && i < processedText.length() - 1) {
-                    char leftChar = finalText.charAt(finalText.length() - 1); // символ слева от '-'
-                    char rightChar = processedText.charAt(i + 1); // символ справа от '-'
-
-                    // Удаляем последний добавленный символ (leftChar)
+                    char leftChar = finalText.charAt(finalText.length() - 1);  // символ слева от '-'
+                    char rightChar = processedText.charAt(i + 1);             // символ справа от '-'
+                    // Удаляем последний добавленный символ (если он есть)
                     finalText.deleteCharAt(finalText.length() - 1);
                     // Меняем местами символы и добавляем их в правильном порядке
                     finalText.append(rightChar);
                     finalText.append(leftChar);
-                    i++; // Пропускаем следующий символ (правый от '-')
                 }
-                continue; // Пропускаем знак '-'
+                // Пропускаем знак '-'
+                i++; // Пропускаем следующий символ (правый от '-')
+                continue;
             } else if (currentChar == '+') {
                 finalText.append('!'); // Заменяем '+' на '!'
             } else if (Character.isDigit(currentChar)) {
